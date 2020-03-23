@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Safari</title>
+    <link rel="stylesheet" href="safari.css">
+</head>
+
+<body>
+    <figure class="safari">
+        <div class="markers">
+            <!-- <span></span>
+            <span></span>
+            <span></span>
+            <span></span> -->
+        </div>
+        <div class="pointer"></div>
+    </figure>
+</body>
+
+<script>
+    const MarkerCount = 60;
+    for (var i = 0; i < MarkerCount; i++) {
+        // console.log(i);
+        let span = document.createElement('span');
+        span.innerHTML='';
+        span.style.setProperty('--rotate-deg', i * 360/MarkerCount + 'deg');
+        document.querySelector('.markers').appendChild(span);
+    }
+</script>
+
+</html>

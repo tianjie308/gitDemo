@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Shopping List Demo</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            width: 25em;
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border: .1px solid grey;
+        }
+
+        #inputContainer {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        #shoppingList {
+            list-style-type: disc;
+            pointer-events: none;
+            text-transform: capitalize;
+        }
+
+        #shoppingList>li::after {
+            content: 'Delete';
+            font-size: 0.25em;
+            width: 5em;
+            position: relative;
+            left: 1em;
+            border: .5px solid grey;
+            border-radius: 10%;
+            color: grey;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1>My Shopping List</h1>
+
+        <div id='inputContainer'>
+            <label for="addItems">Enter a new item: </label>
+            <input type="text" id="inputBox">
+            <button>Add item</button>
+        </div>
+        <ul id="shoppingList">
+            <li>Eggs</li>
+            <li>Milk</li>
+            <li>Bread</li>
+            <li>Humous</li>
+        </ul>
+    </div>
+
+    <script>
+        let shoppingList = document.querySelector('#shoppingList');
+        let inputBox = document.querySelector('#inputBox');
+        inputBox.focus();
+
+        let btn_add = document.querySelector('button');
+        let btns_remove = document.querySelectorAll('li');
+
+        let newItem;
+
+        function update() {
+            btns_remove = document.querySelectorAll('li');
+            for (let i = 0; i < btns_remove.length; i++) {
+                btns_remove[i].addEventListener('click', removeItem);
+            }
+        }
+
+        function addItem() {
+            if (inputBox.value) {
+                if (stringNotEmpty(inputBox.value)) {
+                    newItem = document.createElement('li');
+                    newItem.innerHTML = inputBox.value.toLowerCase();
+                    shoppingList.appendChild(newItem);
+                    update()
+                }                
+            }
+            inputBox.value = '';
+            inputBox.focus();
+        }
+
+        function removeItem() {
+            // console.log('Item removed!'+ this);
+            shoppingList.removeChild(this);
+            inputBox.focus();
+        }
+
+        function stringNotEmpty(str) {
+            let regex = /[\s\d]*/;
+            return str.replace(regex, '');
+        }
+
+        btn_add.addEventListener('click', addItem);
+        update()
+
+    </script>
+</body>
+
+</html>

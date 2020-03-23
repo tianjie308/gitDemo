@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: dodgerblue;
+            background-color: currentColor;
+
+        }
+
+        .words {
+            display: flex;
+            font-size: 15vmin;
+            width: 5em;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .words p {
+            line-height: 1em;
+            margin: 0;
+            /* text-shadow: 0.05em 0.05em 0.3em hsla(0, 0%, 0%, 0.4); */
+            animation: 6s ease-in-out infinite;
+            animation-name: appear, move;
+            animation-delay: calc(var(--n) * 1s);
+        }
+
+        .words p:nth-child(1) {--n: 1;}
+        .words p:nth-child(2) {--n: 2;}
+        .words p:nth-child(3) {--n: 3;}
+        .words p:nth-child(4) {--n: 4;}
+        .words p:nth-child(5) {--n: 5;}
+
+        @keyframes appear {
+            50% {
+                text-shadow: 0.05em 0.05em 0.3em hsla(0, 0%, 0%, 0.3);
+            }
+        }
+
+        @keyframes move {
+            from {transform: translateX(-30%);}
+            to {transform: translateX(30%);}
+        }
+    </style>
+</head>
+<body>
+    <div class="words">
+        <p>你们</p>
+        <p>在没有硝烟的</p>
+        <p>战场上</p>
+        <p>把生命之光</p>
+        <p>再次点燃</p>
+    </div>
+</body>
+</html>

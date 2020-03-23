@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+.safari {
+    font-size: 10px;
+    width: 15em;
+    height: 15em;
+    border-radius: 25%;
+    background-color: snow;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.markers {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    background-image: linear-gradient(
+        hsl(191, 98%, 55%),
+        hsl(220, 88%, 53%));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.markers span {
+    width: 0.1em;
+    background-color: snow;
+    position: absolute;
+}
+
+.markers span {
+    height: var(--h);
+    transform: rotate(var(--rotate-deg)) translateY(var(--y));
+}
+
+.markers span:nth-child(odd) {--h: 0.9em; --y: -6em;}
+.markers span:nth-child(even) {--h: 0.5em; --y: -6.2em;}
+
+.pointer {
+    display: flex;
+    width: 1.4em;
+    height: 12em;
+    flex-direction: column;
+    position: absolute;
+    transform: rotate(30deg);
+    animation: swivel .75s ease-in-out infinite alternate;
+}
+
+.pointer:before,
+.pointer:after {
+    content: '';
+    border-bottom: 6em solid var(--color);
+    border-left: 0.7em solid transparent;
+    border-right: 0.7em solid transparent;
+}
+
+.pointer:before {
+    --color: crimson;
+}
+
+.pointer:after {
+    transform: rotate(180deg);
+    --color: snow;
+}
+
+@keyframes swivel {
+    to {
+        transform: rotate(50deg);
+    }
+}

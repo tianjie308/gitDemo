@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(lightpink, white);
+}
+
+.heart {
+    font-size: 30px;
+    width: 1em;
+    height: 1em;
+    color: hsla(0, 100%, 50%, 0.6);
+    background-color: hsla(0, 100%, 50%, 0.6);
+    border-radius: 50%;
+    --heartShape:  
+    -3.3em -3.3em, -2.2em -3.3em,                                          2.2em -3.3em, 3.3em -3.3em,
+
+
+
+
+-4.4em -2.2em, -3.3em -2.2em, -2.2em -2.2em, -1.1em -2.2em,             1.1em -2.2em, 2.2em -2.2em, 3.3em -2.2em, 4.4em -2.2em,
+
+
+
+
+-4.4em -1.1em, -3.3em -1.1em, -2.2em -1.1em, -1.1em -1.1em, 0em -1.1em, 1.1em -1.1em, 2.2em -1.1em, 3.3em -1.1em, 4.4em -1.1em,
+
+
+
+
+-4.4em 0em,    -3.3em 0em,    -2.2em 0em,    -1.1em 0em,    0em 0em,    1.1em 0em,    2.2em 0em,    3.3em 0em,    4.4em 0em,
+
+
+
+
+    -3.3em 1.1em,  -2.2em 1.1em,  -1.1em 1.1em,  0em 1.1em,  1.1em 1.1em,  2.2em 1.1em,  3.3em 1.1em,
+
+
+
+
+                    -2.2em 2.2em,  -1.1em 2.2em,  0em 2.2em,  1.1em 2.2em,  2.2em 2.2em,
+
+
+
+
+                                    -1.1em 3.3em,  0em 3.3em,  1.1em 3.3em,
+
+
+
+
+                                                0em 4.4em;
+
+    /* box-shadow: var(--heartShape);
+    filter: drop-shadow(3.3em 2.2em dodgerblue); */    
+    animation: 
+        heart-one 1s infinite alternate cubic-bezier(0.5, 1.7, 0.5, 1.5),
+        heart-two 1s 0.3s infinite alternate cubic-bezier(0.5, 1.7, 0.25, 1);
+}
+
+@keyframes heart-one {
+    to {
+        box-shadow: var(--heartShape);
+        color: hsla(0, 100%, 50%, 0.6);
+    }
+}
+
+@keyframes heart-two {
+    to {
+        filter: drop-shadow(3.3em 2.2em dodgerblue);
+    }
+}
